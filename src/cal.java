@@ -48,8 +48,8 @@ public class cal implements ActionListener {
 	@SuppressWarnings("rawtypes")
 	private JComboBox mois, annee, jour;
 	private JButton today;
-	private int anneeC = 1900;
-	private int anneeT = 2100;
+	private int lmiteYear = 100;
+	 
 
 	/**
 	 * Create the application.
@@ -62,7 +62,7 @@ public class cal implements ActionListener {
 		frame.getContentPane().repaint();
 		frame.remove(calpane);
 		int m = mois.getSelectedIndex();
-		int a = annee.getSelectedIndex() + anneeC;
+		int a = (int) annee.getItemAt(annee.getSelectedIndex()) ;
 		int j = jour.getSelectedIndex() + 1;
 
 		calpane = new calendarPane(j, m, a);
@@ -93,7 +93,8 @@ public class cal implements ActionListener {
 
 		annee = new JComboBox();
 		annee.setBackground(Color.WHITE);
-		for (int i = anneeC; i <= anneeT; i++) {
+		//limite pour selecteur annee
+		for (int i = anneer-lmiteYear; i <= anneer+lmiteYear; i++) {
 			annee.addItem(i);
 		}
 
